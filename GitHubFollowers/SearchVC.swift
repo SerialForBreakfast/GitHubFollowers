@@ -18,7 +18,8 @@ class SearchVC: UIViewController {
         view.backgroundColor = .systemBackground
         configureLogoImageView()
         configureTextField()
-        configureCallToActionButton()   
+        configureCallToActionButton()
+        createDismissKeyboardTapGesture()
     }
     
     
@@ -61,5 +62,11 @@ class SearchVC: UIViewController {
             callToActionButton.heightAnchor.constraint(equalToConstant: 50)
             
         ])
+    }
+    
+    
+    private func createDismissKeyboardTapGesture() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tap)
     }
 }

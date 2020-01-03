@@ -1,33 +1,33 @@
 //
-//  GFTitleLabel.swift
+//  GFBodyLabel.swift
 //  GitHubFollowers
 //
-//  Created by Joseph McCraw on 1/1/20.
+//  Created by Joseph McCraw on 1/2/20.
 //  Copyright © 2020 Joseph McCraw. All rights reserved.
 //
 
 import UIKit
 
-class GFTitleLabel: UILabel {
-
+class GFBodyLabel: UILabel {
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
         
     }
     
-    init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
+    init(textAlignment: NSTextAlignment) {
         super.init(frame: .zero)
         self.textAlignment = textAlignment
-        self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
         configure()
     }
     
     private func configure() {
-        textColor = .label
+        textColor = .secondaryLabel
+        font = UIFont.preferredFont(forTextStyle: .body)
         adjustsFontSizeToFitWidth = true
-        minimumScaleFactor = 0.9
-        lineBreakMode = .byTruncatingTail
+        minimumScaleFactor = 0.8
+        lineBreakMode = .byWordWrapping
         translatesAutoresizingMaskIntoConstraints = false
     }
     

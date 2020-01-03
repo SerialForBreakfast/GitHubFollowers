@@ -35,7 +35,7 @@ class SearchVC: UIViewController {
     @objc func pushFollowerListVC() {
         guard isUsernameEntered else {
             print("no text entered")
-            let alertVC = GFAlertVC(title: "No text entered"), message: "Please enter a Github username", buttonTitle: "Okay")
+            let alertVC = GFAlertVC(title: "No text entered", message: "Please enter a Github username", buttonTitle: "Okay")
             present(alertVC, animated: true, completion: nil)
             return
         }

@@ -33,6 +33,7 @@ class SearchVC: UIViewController {
     }
     
     @objc func pushFollowerListVC() {
+        
         guard isUsernameEntered else {
             return
         }

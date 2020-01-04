@@ -14,7 +14,7 @@ extension UIViewController {
                         print("no text entered")
                         let alertVC = GFAlertVC(title: title, message: message, buttonTitle: buttonTitle)
             alertVC.modalPresentationStyle = .overFullScreen
-                        present(alertVC, animated: true, completion: nil)
+            self.present(alertVC, animated: true, completion: nil)
         }
     }
 }

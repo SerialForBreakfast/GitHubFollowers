@@ -11,7 +11,7 @@ import UIKit
 extension UIViewController {
     func presentGFAlertOnMainThread(title: String, message: String, buttonTitle: String) {
         DispatchQueue.main.async {
-                        print("no text entered")
+                        print("presentGFAlertOnMainThread \(title) \(message) \(buttonTitle)")
                         let alertVC = GFAlertVC(title: title, message: message, buttonTitle: buttonTitle)
             alertVC.modalPresentationStyle = .overFullScreen
             self.present(alertVC, animated: true, completion: nil)

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		442E084A23C12F90009A955D /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442E084923C12F90009A955D /* FavoritesVC.swift */; };
 		442E084E23C152CB009A955D /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442E084D23C152CB009A955D /* Follower.swift */; };
+		442E085023C25F26009A955D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442E084F23C25F26009A955D /* User.swift */; };
 		444084C723BA740200AD0E68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444084C623BA740200AD0E68 /* AppDelegate.swift */; };
 		444084C923BA740200AD0E68 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444084C823BA740200AD0E68 /* SceneDelegate.swift */; };
 		444084D023BA740700AD0E68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 444084CF23BA740700AD0E68 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		442E084923C12F90009A955D /* FavoritesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
 		442E084D23C152CB009A955D /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
+		442E084F23C25F26009A955D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		444084C323BA740200AD0E68 /* GitHubFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		444084C623BA740200AD0E68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		444084C823BA740200AD0E68 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				442E084D23C152CB009A955D /* Follower.swift */,
+				442E084F23C25F26009A955D /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				442E085023C25F26009A955D /* User.swift in Sources */,
 				442E084A23C12F90009A955D /* FavoritesVC.swift in Sources */,
 				44F69C8823BACE38009C9E03 /* GFButton.swift in Sources */,
 				44F69C8423BAB441009C9E03 /* SearchVC.swift in Sources */,

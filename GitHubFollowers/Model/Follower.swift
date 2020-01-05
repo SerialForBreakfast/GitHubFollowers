@@ -8,6 +8,7 @@
 
 import Foundation
 
-class Follower: Codable {
-    
+struct Follower: Codable {
+    var login: String
+    var avatarUrl: String  // Snake Case in response, original parameter: avatar_url
 }

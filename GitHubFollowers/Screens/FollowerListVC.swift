@@ -17,15 +17,23 @@ class FollowerListVC: UIViewController {
         
         print(username)
         navigationController?.navigationBar.prefersLargeTitles = true
-        NetworkManager.shared.getFollowers(for: username, page: 1) { (followers, errorMessage) in
-            guard let followers = followers else {
-                self.presentGFAlertOnMainThread(title: "Something bad happened", message: errorMessage!.rawValue, buttonTitle: "ok")
-                return
-            }
-            print(followers)
-            let followerList = followers.description
+        NetworkManager.shared.getFollowers(for: username, page: 1) { result in
             
-            self.presentGFAlertOnMainThread(title: "Followers", message: "Follower Count:  \(followers.count),  JSON:  \(followerList)", buttonTitle: "ok")
+            switch result {
+                case .success(let followers):
+                    print(followers)
+                case .failure(let error):
+                    self.presentGFAlertOnMainThread(title: "Something bad happened", message: error.rawValue, buttonTitle: "ok")
+            }
+//            guard let followers = followers else {
+//
+//                self.presentGFAlertOnMainThread(title: "Something bad happened", message: errorMessage!.rawValue, buttonTitle: "ok")
+//                return
+//            }
+//            print(followers)
+//            let followerList = followers.description
+//            
+//            self.presentGFAlertOnMainThread(title: "Followers", message: "Follower Count:  \(followers.count),  JSON:  \(followerList)", buttonTitle: "ok")
 
         }
         

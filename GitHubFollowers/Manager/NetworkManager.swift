@@ -17,22 +17,23 @@ class NetworkManager {
         
     }
     
-    func getFollowers(for username: String, page: Int, completed: @escaping ([Follower]?, String?) -> Void) {
+    func getFollowers(for username: String, page: Int, completed: @escaping ([Follower]?, ErrorMessage?) -> Void) {
         let endpoint = baseUrl + "\(username)/followers?per_page=100&page=\(page)"
+        
         guard let url = URL(string: endpoint) else {
-            completed(nil, "This username created an invalid request.")
+            completed(nil, .invalidUsername)
             return
         }
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let _ = error {
-                completed(nil, "Unable to complete request.  Check your internet connection")
+                completed(nil, .unableToComplete)
             }
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completed(nil, "Invalid Response.  Please try again. ")
+                completed(nil, .invalidResponse)
                 return
             }
             guard let data = data else {
-                completed(nil, "Data was invalid.")
+                completed(nil, .invalidData)
                 return
             }
             
@@ -43,7 +44,7 @@ class NetworkManager {
                 print(followers.description)
                 completed(followers, nil)
             } catch {
-                completed(nil, "Data was invalid.")
+                completed(nil, .invalidData)
             }
         }
         task.resume()

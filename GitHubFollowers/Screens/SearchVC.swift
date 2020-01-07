@@ -40,6 +40,7 @@ class SearchVC: UIViewController {
         let followerListVC = FollowerListVC()
         followerListVC.username = usernameTextField.text
         followerListVC.title = usernameTextField.text
+//        print(followerListVC.username)
         navigationController?.pushViewController(followerListVC, animated: true)
     }
     
@@ -92,6 +93,7 @@ class SearchVC: UIViewController {
 
 extension SearchVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        pushFollowerListVC()
         return true
     }
 }

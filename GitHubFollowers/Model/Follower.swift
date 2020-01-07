@@ -8,7 +8,12 @@
 
 import Foundation
 
-struct Follower: Codable {
+struct Follower: Codable, Hashable {
     var login: String
     var avatarUrl: String  // Snake Case in response, original parameter: avatar_url
+    
+    //Optional Hash Function for a single item 'login'
+//    func hash(into hasher: inout Hasher) {
+//        hasher.combine(login)
+//    }
 }

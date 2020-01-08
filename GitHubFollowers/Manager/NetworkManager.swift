@@ -6,13 +6,13 @@
 //  Copyright © 2020 Joseph McCraw. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 // Network Singleton
 class NetworkManager {
     static let shared = NetworkManager()
-    let baseUrl = "https://api.github.com/users/"
-    
+    private let baseUrl = "https://api.github.com/users/"
+    let cache = NSCache<NSString, UIImage>()
     
     
     private init() {

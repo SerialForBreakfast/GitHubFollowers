@@ -21,7 +21,7 @@ class FollowerListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(username)
+//        print(username)
         configureViewController()
         configureCollectionView()
         getFollowers()

@@ -86,13 +86,12 @@
 		442E084823C12EFC009A955D /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				44FE8EA923CD49A200D63EF1 /* TextFields */,
+				44FE8EA823CD498B00D63EF1 /* Buttons */,
+				44FE8EA723CD497D00D63EF1 /* Labels */,
+				44FE8EA623CD497300D63EF1 /* ImageViews */,
+				44FE8EA523CD496400D63EF1 /* ViewControllers */,
 				442E085723C3BD3F009A955D /* Cells */,
-				44F69C8723BACE38009C9E03 /* GFButton.swift */,
-				44F69C8923BBBE16009C9E03 /* GFTextField.swift */,
-				44C77DB023BEF45A00E6CDC0 /* GFAlertVC.swift */,
-				44C77DAA23BD041B00E6CDC0 /* GFTitleLabel.swift */,
-				44C77DAE23BEF3A900E6CDC0 /* GFBodyLabel.swift */,
-				442E085A23C3BDCE009A955D /* GFAvatarImageView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -171,6 +170,47 @@
 				444084D423BA740700AD0E68 /* Info.plist */,
 			);
 			path = GitHubFollowers;
+			sourceTree = "<group>";
+		};
+		44FE8EA523CD496400D63EF1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				44C77DB023BEF45A00E6CDC0 /* GFAlertVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		44FE8EA623CD497300D63EF1 /* ImageViews */ = {
+			isa = PBXGroup;
+			children = (
+				442E085A23C3BDCE009A955D /* GFAvatarImageView.swift */,
+			);
+			path = ImageViews;
+			sourceTree = "<group>";
+		};
+		44FE8EA723CD497D00D63EF1 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				44C77DAA23BD041B00E6CDC0 /* GFTitleLabel.swift */,
+				44C77DAE23BEF3A900E6CDC0 /* GFBodyLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		44FE8EA823CD498B00D63EF1 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				44F69C8723BACE38009C9E03 /* GFButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		44FE8EA923CD49A200D63EF1 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				44F69C8923BBBE16009C9E03 /* GFTextField.swift */,
+			);
+			path = TextFields;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

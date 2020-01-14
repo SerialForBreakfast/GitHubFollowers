@@ -23,7 +23,7 @@ class FollowerListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print(username)
+        //        print(username)
         configureViewController()
         configureCollectionView()
         getFollowers(username: username, page: page)
@@ -45,30 +45,38 @@ class FollowerListVC: UIViewController {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(in: view))
         view.addSubview(collectionView)
         collectionView.delegate = self
-//        collectionView.order
+        //        collectionView.order
         collectionView.backgroundColor = .systemTeal
         collectionView.register(GFFollowerCell.self, forCellWithReuseIdentifier: GFFollowerCell.reuseID)
         
     }
-
+    
     
     
     func getFollowers(username: String, page: Int) {
         showloadingView()
-//        #warning("Call Dismiss")
+        //        #warning("Call Dismiss")
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
             guard let self = self else { return }
             self.dismissLoadingView()
             switch result {
-                case .success(let followers):
-                    if followers.count < 100 {
-                        self.hasMoreFollowers = false
+            case .success(let followers):
+                if followers.count < 100 {
+                    self.hasMoreFollowers = false
+                }
+                self.followers.append(contentsOf: followers)
+                
+                if followers.isEmpty {
+                    let message = "This user has no followers. 🙁"
+                    print(message)
+                    DispatchQueue.main.async {
+                        self.showEmptyStateView(with: message, in: self.view)
                     }
-//                    print(followers)
-                    self.followers.append(contentsOf: followers)
-                    self.updateData()
-                case .failure(let error):
-                    self.presentGFAlertOnMainThread(title: "Something bad happened", message: error.rawValue, buttonTitle: "ok")
+                    return
+                }
+                self.updateData()
+            case .failure(let error):
+                self.presentGFAlertOnMainThread(title: "Something bad happened", message: error.rawValue, buttonTitle: "ok")
             }
         }
     }

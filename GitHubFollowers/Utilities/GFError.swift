@@ -1,8 +1,8 @@
 //
-//  ErrorMessage.swift
+//  GFError.swift
 //  GitHubFollowers
 //
-//  Created by Joseph McCraw on 1/5/20.
+//  Created by Joseph McCraw on 1/23/20.
 //  Copyright © 2020 Joseph McCraw. All rights reserved.
 //
 

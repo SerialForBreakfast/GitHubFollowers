@@ -116,7 +116,27 @@ class FollowerListVC: UIViewController {
     }
     
     @objc func addButtonTapped() {
-        
+        showloadingView()
+        NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+                case .success(let user):
+                    let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+                    PersistenceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
+                        guard let self = self else { return }
+                        
+                        guard let error = error else {
+                            self.presentGFAlertOnMainThread(title: "Success", message: "Successfully favorited \(user.login)", buttonTitle: "OK")
+                            return
+                        }
+                        self.presentGFAlertOnMainThread(title: "Error", message: "Couldn't save favorite \(user.login) with error: \(error.rawValue)", buttonTitle:     "OK" )
+                    }
+                case .failure(let error):
+                    self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
+            }
+            self.dismissLoadingView()
+        }
         print("add button tapped")
     }
 }

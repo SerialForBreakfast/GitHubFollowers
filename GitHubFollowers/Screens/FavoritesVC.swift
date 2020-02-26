@@ -19,7 +19,7 @@ class FavoritesVC: UIViewController {
             case .success(let favorites):
                 print(favorites)
             case .failure(let error):
-                break
+                print("Error retreiving Favorites: \(error.localizedDescription)")
             }
         }
     }

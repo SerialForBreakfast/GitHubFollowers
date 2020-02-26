@@ -40,7 +40,6 @@ class SearchVC: UIViewController {
         let followerListVC = FollowerListVC()
         followerListVC.username = usernameTextField.text
         followerListVC.title = usernameTextField.text
-//        print(followerListVC.username)
         navigationController?.pushViewController(followerListVC, animated: true)
     }
     
@@ -66,7 +65,6 @@ class SearchVC: UIViewController {
             usernameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             usernameTextField.heightAnchor.constraint(equalToConstant: 50)
         ])
-//        usernameTextField.a
     }
     
     

@@ -54,7 +54,6 @@ class FollowerListVC: UIViewController {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(in: view))
         view.addSubview(collectionView)
         collectionView.delegate = self
-        //        collectionView.order
         collectionView.backgroundColor = .systemTeal
         collectionView.register(GFFollowerCell.self, forCellWithReuseIdentifier: GFFollowerCell.reuseID)
         
@@ -85,7 +84,6 @@ class FollowerListVC: UIViewController {
                 
                 if followers.isEmpty {
                     let message = "This user has no followers. 🙁"
-//                    print(message)
                     DispatchQueue.main.async {
                         self.showEmptyStateView(with: message, in: self.view)
                     }
@@ -137,7 +135,6 @@ class FollowerListVC: UIViewController {
             }
             self.dismissLoadingView()
         }
-        print("add button tapped")
     }
 }
 

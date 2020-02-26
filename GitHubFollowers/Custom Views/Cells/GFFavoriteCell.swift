@@ -13,11 +13,9 @@ class GFFavoriteCell: UITableViewCell {
     let avatarImageView = GFAvatarImageView(frame: .zero)
     let usernameLabel = GFTitleLabel(textAlignment: .left, fontSize: 26)
     
-//    init(style: UITableViewCell.CellS)
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configure()
-        
     }
     
     private func configure() {
@@ -36,9 +34,6 @@ class GFFavoriteCell: UITableViewCell {
             usernameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 24),
             usernameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
             usernameLabel.heightAnchor.constraint(equalToConstant: 40)
-            
-            
-        
         ])
         
     }

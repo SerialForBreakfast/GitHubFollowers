@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol UserInfoVCDelegate: class {
+    func didTapGitHubProfile(for user: User)
+    func didTapGetFollowers(for user: User)
+}
+
 class UserInfoVC: UIViewController {
     var username: String!
     
@@ -16,6 +21,8 @@ class UserInfoVC: UIViewController {
     let itemViewTwo = UIView()
     
     let dateLabel = GFBodyLabel(textAlignment: .center)
+    
+    weak var delegate: FollowerListVCDelegate!
     
     var itemViews:[UIView] = []
     
@@ -31,18 +38,29 @@ class UserInfoVC: UIViewController {
             guard let self = self else { return }
             switch result {
             case .success(let user):
-                print(user)
+                //print(user)
                 DispatchQueue.main.async {
-                    self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
-                    self.add(childVC: GFRepoItemVC(user: user), to: self.itemViewOne)
-                    self.add(childVC: GFFollowerItemVC(user: user), to: self.itemViewTwo)
-                    self.dateLabel.text = "Github since: \(user.createdAt.convertToDisplayFormat())"
+                    self.configureUIElements(with: user)
                 }
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wron", message: error.rawValue, buttonTitle: "OK")
             }
         }
     }
+    func configureUIElements(with user: User) {
+        self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
+        
+        let repoItemVC = GFRepoItemVC(user: user)
+        repoItemVC.delegate = self
+        self.add(childVC: repoItemVC, to: self.itemViewOne)
+        
+        let followerItemVC = GFFollowerItemVC(user: user)
+        followerItemVC.delegate = self
+        self.add(childVC: followerItemVC, to: self.itemViewTwo)
+        
+        self.dateLabel.text = "Github since: \(user.createdAt.convertToDisplayFormat())"
+    }
+    
     
     fileprivate func configureViewController() {
         view.backgroundColor = .gray
@@ -93,4 +111,25 @@ class UserInfoVC: UIViewController {
     @objc func dismissVC() {
         dismiss(animated: true, completion: nil)
     }
+}
+
+extension UserInfoVC: UserInfoVCDelegate {
+    func didTapGitHubProfile(for user: User) {
+        guard let url = URL(string: user.htmlUrl) else { presentGFAlertOnMainThread(title: "Invalid URL", message: "Url for this users is invalid.  \(user.htmlUrl)", buttonTitle: "OK")
+            return
+            
+        }
+        presentSafariVC(with: url)
+    }
+    
+    func didTapGetFollowers(for user: User) {
+        guard user.followers != 0 else { presentGFAlertOnMainThread(title: "No Followers", message: "This user \(user.login) has no followers", buttonTitle: "OK")
+            return
+        }
+        
+        delegate.didRequestFollowers(for: user.login)
+        dismissVC()
+    }
+    
+    
 }

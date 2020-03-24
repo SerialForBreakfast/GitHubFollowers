@@ -37,7 +37,12 @@ class GFUserInfoHeaderVC: UIViewController {
     }
     
     func configureUIElements() {
-        avatarImageView.downloadImages(from: user.avatarUrl)
+        NetworkManager.shared.downloadImages(from: user.avatarUrl) { [weak self] image in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.avatarImageView.image = image
+            }
+        }
         usernameLabel.text = user.login
         nameLabel.text = user.name ?? "N/A"
         locationLabel.text = user.location ?? "No Location"
@@ -55,7 +60,6 @@ class GFUserInfoHeaderVC: UIViewController {
         view.addSubview(locationImageView)
         view.addSubview(locationLabel)
         view.addSubview(bioLabel)
-        
     }
     
     func layoutUI() {
@@ -92,9 +96,6 @@ class GFUserInfoHeaderVC: UIViewController {
             bioLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor),
             bioLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             bioLabel.heightAnchor.constraint(equalToConstant: 60)
-            
-            
-            
         ])
     }
     

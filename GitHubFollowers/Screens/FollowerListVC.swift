@@ -82,7 +82,6 @@ class FollowerListVC: UIViewController {
     
     func getFollowers(username: String, page: Int) {
         showloadingView()
-        //        #warning("Call Dismiss")
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
             guard let self = self else { return }
             self.dismissLoadingView()
@@ -100,7 +99,8 @@ class FollowerListVC: UIViewController {
                     }
                     return
                 }
-                self.updateData(on: followers)
+                print("Followers Count after success followers: \(followers.count) self.followers \(self.followers.count)")
+                self.updateData(on: self.followers)
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something bad happened", message: error.rawValue, buttonTitle: "ok")
             }
@@ -115,6 +115,7 @@ class FollowerListVC: UIViewController {
             return cell
         })
     }
+
     func updateData(on followers: [Follower]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
@@ -202,6 +203,4 @@ extension FollowerListVC: FollowerListVCDelegate {
         collectionView.setContentOffset(.zero, animated: true)
         getFollowers(username: username, page: page)
     }
-    
-    
 }
